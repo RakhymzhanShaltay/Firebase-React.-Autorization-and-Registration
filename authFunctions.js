@@ -1,7 +1,6 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./firebase";
 
-// ✅ Регистрация
 export const registerUser = async (email, password) => {
   try {
     await createUserWithEmailAndPassword(auth, email, password);
@@ -11,7 +10,6 @@ export const registerUser = async (email, password) => {
   }
 };
 
-// ✅ Вход
 export const loginUser = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
