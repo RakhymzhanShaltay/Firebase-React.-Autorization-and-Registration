@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
-import { registerUser } from "./authFunctions"; // функция регистрации из другого файла
+import { registerUser } from "./authFunctions"; 
 
 function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState(null); // для отображения текущего пользователя
+  const [user, setUser] = useState(null); 
 
-  // 📌 Отслеживаем вход/выход пользователя
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -20,10 +19,9 @@ function App() {
       }
     });
 
-    return () => unsubscribe(); // отписка от слушателя
+    return () => unsubscribe(); 
   }, []);
 
-  // 📌 Форма регистрации
   const handleRegister = (e) => {
     e.preventDefault();
     registerUser(email, password);
